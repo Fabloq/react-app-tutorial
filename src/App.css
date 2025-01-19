@@ -3,3 +3,16 @@
   flex-direction: column;
   max-width: 400px;
 }
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+th,
+td {
+  text-align: left;
+}
+
+td a {
+  margin-right: 10px;
+}
