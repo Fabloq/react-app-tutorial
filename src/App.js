@@ -29,7 +29,7 @@ function App() {
   const handleEditNote = () => {
     axios
       .put("https://api.fabloq.com/pginttest/notes/edit/", {
-        id: String(noteID),
+        id: noteID,
         body: body,
         name: name,
       })
@@ -46,7 +46,7 @@ function App() {
     axios
       .delete("https://api.fabloq.com/pginttest/notes/delete/", {
         data: {
-          id: String(id),
+          id: id,
         },
       })
       .then((res) => {
