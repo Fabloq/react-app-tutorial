@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
-  const projectName = "pginttest";
+  const projectId = "{projectId}"; // enter your project ID
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
   const [noteID, setNoteID] = useState("");
@@ -15,7 +15,7 @@ function App() {
 
   const handleCreateNote = () => {
     axios
-      .post(`https://api.fabloq.com/${projectName}/notes/create/`, {
+      .post(`https://api.fabloq.com/${projectId}/notes/create/`, {
         name: name,
         body: body,
       })
@@ -29,7 +29,7 @@ function App() {
 
   const handleEditNote = () => {
     axios
-      .put(`https://api.fabloq.com/${projectName}/notes/edit/`, {
+      .put(`https://api.fabloq.com/${projectId}/notes/edit/`, {
         id: noteID,
         body: body,
         name: name,
@@ -45,7 +45,7 @@ function App() {
 
   const handleDeleteNote = (id) => {
     axios
-      .delete(`https://api.fabloq.com/${projectName}/notes/delete/`, {
+      .delete(`https://api.fabloq.com/${projectId}/notes/delete/`, {
         data: {
           id: id,
         },
@@ -57,11 +57,9 @@ function App() {
 
   const getNotes = () => {
     setNotes([]);
-    axios
-      .get(`https://api.fabloq.com/${projectName}/notes/list/`)
-      .then((res) => {
-        setNotes(res.data.notes);
-      });
+    axios.get(`https://api.fabloq.com/${projectId}/notes/list/`).then((res) => {
+      setNotes(res.data.notes);
+    });
   };
 
   useEffect(() => {
